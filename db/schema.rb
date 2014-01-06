@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(:version => 20140103222144) do
 
   create_table "policies", :force => true do |t|
     t.integer  "video_id"
-    t.integer  "policy_code_id"
+    t.string   "policy_code"
     t.integer  "country_code_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false

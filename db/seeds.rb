@@ -1,7 +1,17 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+country_codes = CountryCode.create(
+	[
+		{name: 'United States', iso_code: 'US'},
+		{name: 'Canada', iso_code: 'CA'},
+		{name: 'Mexico', iso_code: 'MX'},
+		{name: 'China', iso_code: 'CN'},
+		{name: 'Taiwan', iso_code: 'IN'}
+	]
+)
+
+(00..99).each do |i|
+	video = Video.create({title: "VID#{"%02d" % i}", description: "Description for VID#{"%02d" % i}"})
+	country_codes.each do |country_code|
+		policy_code = Policy::POLICY_CODES.sample
+		video.policies.create(country_code_id: country_code.id, policy_code: policy_code)
+	end
+end
