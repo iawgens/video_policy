@@ -1,3 +1,3 @@
 json.videos @videos do |video|
-	json.(video, :title, :description)
+	json.(video, :id, :title, :description)
 end
